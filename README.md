@@ -28,3 +28,14 @@ npm run dev
 - WebGL fallback for unsupported browsers
 - Reduced-motion support
 - Mobile-friendly responsive layout
+
+## Production checks
+
+```bash
+npm run lint
+npm run build
+```
+
+The Three.js vendor bundle is intentionally separated from the main app bundle so the normal page shell can load before the immersive 3D layer.
+
+The build also creates the small server entry required by the Sites production host.

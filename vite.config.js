@@ -4,6 +4,8 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   plugins: [react()],
   build: {
+    outDir: 'dist/client',
+    emptyOutDir: true,
     rollupOptions: {
       output: {
         manualChunks(id) {
