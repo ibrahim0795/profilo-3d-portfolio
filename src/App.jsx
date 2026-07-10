@@ -46,13 +46,25 @@ const projects = [
   },
 ];
 
+function SceneLoader() {
+  return (
+    <div className="scene-loader" aria-hidden="true">
+      <span />
+    </div>
+  );
+}
+
 function App() {
   useCinematicScroll();
   const activeSection = useActiveSection(['hero', ...navItems.map((item) => item.id)]);
 
   return (
     <main>
-      <Suspense fallback={null}>
+      <a className="skip-link" href="#about">
+        Skip to profile content
+      </a>
+
+      <Suspense fallback={<SceneLoader />}>
         <PortfolioScene />
       </Suspense>
 
