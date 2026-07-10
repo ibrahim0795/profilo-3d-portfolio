@@ -12,14 +12,14 @@ const navItems = [
 ];
 
 const skills = [
-  'HTML',
-  'CSS',
-  'JavaScript',
-  'React',
-  'Three.js',
-  'GitHub',
-  'SQL',
-  'Python',
+  { name: 'HTML', type: 'Structure', level: 'Core' },
+  { name: 'CSS', type: 'Interface', level: 'Strong' },
+  { name: 'JavaScript', type: 'Logic', level: 'Core' },
+  { name: 'React', type: 'Frontend', level: 'Growing' },
+  { name: 'Three.js', type: '3D Web', level: 'Creative' },
+  { name: 'GitHub', type: 'Workflow', level: 'Daily' },
+  { name: 'SQL', type: 'Data', level: 'Practical' },
+  { name: 'Python', type: 'Tools', level: 'Practical' },
 ];
 
 const projects = [
@@ -28,18 +28,21 @@ const projects = [
     description:
       'A cinematic scroll-controlled 3D product story for a futuristic wearable concept.',
     stack: 'React, Three.js, GSAP',
+    signal: 'Cinematic product UI',
   },
   {
     name: 'Flex Marks Tracker',
     description:
       'A practical student-focused tracker for understanding marks, grades, and progress.',
     stack: 'JavaScript, Browser Extension',
+    signal: 'Useful student tool',
   },
   {
     name: 'Portfolio System',
     description:
       'This immersive profile site, designed to present skills and projects with premium clarity.',
     stack: 'React, Vite, 3D Web',
+    signal: 'Personal brand system',
   },
 ];
 
@@ -121,18 +124,25 @@ function App() {
 
       <section className="section" id="skills" aria-labelledby="skills-title">
         <div className="section-content">
-          <div className="reveal">
+          <div className="section-heading reveal">
             <p className="eyebrow">Skills</p>
             <h2 id="skills-title">Tools I use to build the experience.</h2>
+            <p>
+              Each skill is presented like a small signal module: readable first,
+              futuristic second.
+            </p>
           </div>
           <div className="skill-grid">
             {skills.map((skill, index) => (
               <article
                 className="skill-card reveal"
-                key={skill}
+                key={skill.name}
                 style={{ '--delay': `${index * 55}ms` }}
               >
-                <span>{skill}</span>
+                <span className="skill-orb" aria-hidden="true" />
+                <span className="skill-name">{skill.name}</span>
+                <span className="skill-meta">{skill.type}</span>
+                <span className="skill-level">{skill.level}</span>
               </article>
             ))}
           </div>
@@ -141,9 +151,13 @@ function App() {
 
       <section className="section" id="projects" aria-labelledby="projects-title">
         <div className="section-content">
-          <div className="reveal">
+          <div className="section-heading reveal">
             <p className="eyebrow">Projects</p>
-            <h2 id="projects-title">Selected work, ready for hologram mode.</h2>
+            <h2 id="projects-title">Selected work in hologram mode.</h2>
+            <p>
+              Project panels now feel like floating digital displays, while the
+              real information stays easy to scan.
+            </p>
           </div>
           <div className="project-grid">
             {projects.map((project, index) => (
@@ -152,9 +166,15 @@ function App() {
                 key={project.name}
                 style={{ '--delay': `${index * 90}ms` }}
               >
+                <div className="project-visual" aria-hidden="true">
+                  <span />
+                  <span />
+                  <span />
+                </div>
                 <p className="card-label">{project.stack}</p>
                 <h3>{project.name}</h3>
                 <p>{project.description}</p>
+                <p className="project-signal">{project.signal}</p>
                 <div className="project-actions">
                   <a href="https://github.com/ibrahim0795">GitHub</a>
                   <a href="#contact">Details</a>
