@@ -4,14 +4,15 @@ import { resolve } from 'node:path';
 
 const root = process.cwd();
 const distDir = resolve(root, 'dist');
+const clientDir = resolve(distDir, 'client');
 const serverDir = resolve(distDir, 'server');
 const hostingSource = resolve(root, '.openai', 'hosting.json');
 const hostingTargetDir = resolve(distDir, '.openai');
 const hostingTarget = resolve(hostingTargetDir, 'hosting.json');
 const serverEntry = resolve(serverDir, 'index.js');
 
-if (!existsSync(resolve(distDir, 'index.html'))) {
-  throw new Error('Vite build did not create dist/index.html');
+if (!existsSync(resolve(clientDir, 'index.html'))) {
+  throw new Error('Vite build did not create dist/client/index.html');
 }
 
 await mkdir(serverDir, { recursive: true });
