@@ -112,7 +112,7 @@ function FloatingName() {
         anchorY="middle"
         color="#eaf8ff"
       >
-        HARIS
+        IBRAHIM
         <meshStandardMaterial
           color="#eaf8ff"
           emissive="#68e8ff"
