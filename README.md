@@ -20,3 +20,11 @@ This project is being built step by step with GitHub branches so each stage can 
 npm install
 npm run dev
 ```
+
+## Quality goals
+
+- Readable profile content first
+- Lightweight 3D layer loaded separately from the main page
+- WebGL fallback for unsupported browsers
+- Reduced-motion support
+- Mobile-friendly responsive layout

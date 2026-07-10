@@ -33,6 +33,12 @@ a {
   color: inherit;
 }
 
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid rgba(104, 232, 255, 0.9);
+  outline-offset: 4px;
+}
+
 main {
   position: relative;
   overflow: hidden;
@@ -62,6 +68,91 @@ main::before {
 
 .scene-canvas canvas {
   display: block;
+}
+
+.scene-loader,
+.scene-fallback {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 70% 38%, rgba(104, 232, 255, 0.18), transparent 18rem),
+    radial-gradient(circle at 20% 72%, rgba(95, 124, 255, 0.16), transparent 20rem),
+    #030712;
+}
+
+.scene-loader span,
+.scene-fallback span {
+  position: absolute;
+  border: 1px solid rgba(104, 232, 255, 0.32);
+  border-radius: 50%;
+  box-shadow: 0 0 40px rgba(104, 232, 255, 0.12);
+}
+
+.scene-loader span {
+  top: 38%;
+  right: 18%;
+  width: clamp(10rem, 24vw, 22rem);
+  height: clamp(10rem, 24vw, 22rem);
+  animation: pulse-ring 2.4s ease-in-out infinite;
+}
+
+.scene-fallback span:nth-child(1) {
+  top: 32%;
+  right: 14%;
+  width: 24rem;
+  height: 24rem;
+  transform: rotateX(64deg) rotateZ(-12deg);
+}
+
+.scene-fallback span:nth-child(2) {
+  top: 42%;
+  right: 20%;
+  width: 16rem;
+  height: 16rem;
+  transform: rotateX(64deg) rotateZ(22deg);
+}
+
+.scene-fallback span:nth-child(3) {
+  top: 51%;
+  right: 32%;
+  width: 0.8rem;
+  height: 0.8rem;
+  background: #68e8ff;
+  box-shadow: 0 0 30px rgba(104, 232, 255, 0.9);
+}
+
+@keyframes pulse-ring {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.95) rotateX(64deg) rotateZ(-12deg);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1.04) rotateX(64deg) rotateZ(18deg);
+  }
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 30;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  background: #eaf8ff;
+  color: #02040b;
+  font-weight: 900;
+  text-decoration: none;
+  transform: translateY(-160%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
 }
 
 .site-nav {
@@ -496,9 +587,19 @@ h3 {
   .scene-canvas {
     opacity: 0.72;
   }
+
+  .identity-card {
+    min-height: 320px;
+  }
 }
 
 @media (max-width: 680px) {
+  main::before {
+    background:
+      linear-gradient(180deg, rgba(3, 7, 18, 0.58), rgba(3, 7, 18, 0.84)),
+      radial-gradient(circle at 72% 28%, rgba(104, 232, 255, 0.14), transparent 18rem);
+  }
+
   .site-nav {
     align-items: flex-start;
     border-radius: 1.4rem;
@@ -507,11 +608,28 @@ h3 {
   .nav-links {
     flex-wrap: wrap;
     justify-content: flex-end;
+    max-width: 14rem;
   }
 
   .section {
     min-height: auto;
-    padding: 6rem 0 2rem;
+    padding: 6.5rem 0 2.4rem;
+  }
+
+  .hero-section {
+    min-height: 100vh;
+    background:
+      linear-gradient(180deg, rgba(3, 7, 18, 0.58) 0%, rgba(3, 7, 18, 0.9) 72%),
+      radial-gradient(circle at 72% 28%, rgba(104, 232, 255, 0.16), transparent 18rem);
+  }
+
+  h1 {
+    font-size: clamp(2.8rem, 15vw, 4.5rem);
+    letter-spacing: -0.07em;
+  }
+
+  h2 {
+    letter-spacing: -0.04em;
   }
 
   .hero-actions {
@@ -521,11 +639,35 @@ h3 {
   .button {
     width: 100%;
   }
+
+  .identity-card,
+  .glass-panel,
+  .project-card,
+  .contact-panel {
+    border-radius: 1.25rem;
+  }
+
+  .project-visual {
+    min-height: 105px;
+  }
 }
 
 @media (max-width: 460px) {
   .skill-grid {
     grid-template-columns: 1fr;
+  }
+
+  .site-nav {
+    width: min(100% - 1rem, 28rem);
+  }
+
+  .brand-mark {
+    width: 2.35rem;
+    height: 2.35rem;
+  }
+
+  .nav-links a {
+    font-size: 0.82rem;
   }
 }
 
@@ -545,6 +687,10 @@ h3 {
   .skill-card,
   .project-card {
     transform: none;
+  }
+
+  .scene-loader span {
+    animation: none;
   }
 }
 
