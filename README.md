@@ -2,6 +2,8 @@
 
 A futuristic immersive 3D personal portfolio website.
 
+Live site: [https://profilo-3d-portfolio.vercel.app/](https://profilo-3d-portfolio.vercel.app/)
+
 This project is being built step by step with GitHub branches so each stage can be reviewed before moving forward.
 
 ## Build plan
