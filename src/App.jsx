@@ -1,3 +1,7 @@
+import { Suspense, lazy } from 'react';
+
+const PortfolioScene = lazy(() => import('./components/scene/PortfolioScene.jsx'));
+
 const skills = [
   'HTML',
   'CSS',
@@ -33,6 +37,9 @@ const projects = [
 function App() {
   return (
     <main>
+      <Suspense fallback={null}>
+        <PortfolioScene />
+      </Suspense>
       <nav className="site-nav" aria-label="Main navigation">
         <a className="brand-mark" href="#hero" aria-label="Go to top">
           H
