@@ -1,7 +1,19 @@
 /* eslint-disable react/no-unknown-property, react/prop-types */
 import { Float, Stars, Text3D, Center } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Suspense, useRef } from 'react';
+import { Suspense, useEffect, useRef } from 'react';
+
+const cameraPositions = [
+  [0, 0.35, 6.2],
+  [-1.2, 0.55, 5.4],
+  [1.2, 0.2, 4.8],
+  [-0.8, -0.15, 5.1],
+  [0.35, 0.6, 6.4],
+];
+
+function lerp(start, end, amount) {
+  return start + (end - start) * amount;
+}
 
 function NeonRing({ radius = 2.5, rotation = [0, 0, 0], color = '#68e8ff' }) {
   return (
@@ -71,6 +83,49 @@ function FloatingInitials() {
 }
 
 function SceneContent() {
+  const rigRef = useRef(null);
+  const scrollRef = useRef(0);
+
+  useEffect(() => {
+    const updateScroll = () => {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      scrollRef.current = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+    };
+
+    updateScroll();
+    window.addEventListener('scroll', updateScroll, { passive: true });
+    window.addEventListener('resize', updateScroll);
+
+    return () => {
+      window.removeEventListener('scroll', updateScroll);
+      window.removeEventListener('resize', updateScroll);
+    };
+  }, []);
+
+  useFrame((state, delta) => {
+    const progress = scrollRef.current;
+    const scaled = progress * (cameraPositions.length - 1);
+    const index = Math.min(Math.floor(scaled), cameraPositions.length - 2);
+    const localProgress = scaled - index;
+    const from = cameraPositions[index];
+    const to = cameraPositions[index + 1];
+
+    state.camera.position.x = lerp(state.camera.position.x, lerp(from[0], to[0], localProgress), delta * 3);
+    state.camera.position.y = lerp(state.camera.position.y, lerp(from[1], to[1], localProgress), delta * 3);
+    state.camera.position.z = lerp(state.camera.position.z, lerp(from[2], to[2], localProgress), delta * 3);
+    state.camera.lookAt(0.35, 0, -1.8);
+
+    if (rigRef.current) {
+      rigRef.current.position.x = lerp(rigRef.current.position.x, 1.7 - progress * 2.6, delta * 2.2);
+      rigRef.current.position.y = lerp(
+        rigRef.current.position.y,
+        Math.sin(progress * Math.PI * 2) * 0.4,
+        delta * 2.2,
+      );
+      rigRef.current.rotation.y = lerp(rigRef.current.rotation.y, progress * Math.PI * 1.4, delta * 1.8);
+    }
+  });
+
   return (
     <>
       <color attach="background" args={['#030712']} />
@@ -87,7 +142,7 @@ function SceneContent() {
         fade
         speed={0.35}
       />
-      <group position={[1.7, 0, -1.8]}>
+      <group ref={rigRef} position={[1.7, 0, -1.8]}>
         <CoreIdentity />
         <FloatingInitials />
       </group>
