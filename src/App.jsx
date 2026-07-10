@@ -24,25 +24,37 @@ const skills = [
 
 const projects = [
   {
-    name: 'NOVA 3D Showcase',
+    name: 'AI Video Clipper',
     description:
-      'A cinematic scroll-controlled 3D product story for a futuristic wearable concept.',
-    stack: 'React, Three.js, GSAP',
-    signal: 'Cinematic product UI',
+      'AI-powered video repurposing pipeline that turns uploads and video URLs into captioned 9:16 social clips.',
+    stack: 'Python, Flask, FFmpeg, Groq',
+    signal: 'AI media pipeline',
+    github: 'https://github.com/ibrahim0795/AI-video-clipper',
   },
   {
-    name: 'Flex Marks Tracker',
+    name: 'CareerOrbit Internship Tracker',
     description:
-      'A practical student-focused tracker for understanding marks, grades, and progress.',
-    stack: 'JavaScript, Browser Extension',
-    signal: 'Useful student tool',
+      'An immersive 3D internship and junior-job tracker with pipelines, analytics, interview prep and CV management.',
+    stack: 'Next.js, TypeScript, PostgreSQL',
+    signal: 'Full-stack career platform',
+    github: 'https://github.com/ibrahim0795/full-stack-internship-application-tracker',
+    demo: 'https://full-stack-internship-application-t.vercel.app',
   },
   {
-    name: 'Portfolio System',
+    name: 'Gameboy in C++ using SFML',
     description:
-      'This immersive profile site, designed to present skills and projects with premium clarity.',
-    stack: 'React, Vite, 3D Web',
-    signal: 'Personal brand system',
+      'A C++ SFML Gameboy-style package that brings multiple games together into one creative project.',
+    stack: 'C++, SFML',
+    signal: 'Game development',
+    github: 'https://github.com/ibrahim0795/Gameboy-in-Cpp-using-SFML',
+  },
+  {
+    name: 'Candy Crush in OpenGL',
+    description:
+      'A feature-rich match-3 game with cascades, scoring, levels, hints, pause controls and persistent save/load state.',
+    stack: 'C++, OpenGL',
+    signal: 'Graphics programming',
+    github: 'https://github.com/ibrahim0795/Simple-Candy-Crush-game-using-Cpp-in-openGL',
   },
 ];
 
@@ -70,7 +82,7 @@ function App() {
 
       <nav className="site-nav" aria-label="Main navigation">
         <a className="brand-mark" href="#hero" aria-label="Go to top">
-          H
+          I
         </a>
         <div className="nav-links">
           {navItems.map((item) => (
@@ -89,7 +101,7 @@ function App() {
         <div className="section-content hero-grid">
           <div className="reveal">
             <p className="eyebrow">Immersive 3D Portfolio</p>
-            <h1 id="page-title">Haris builds futuristic web experiences.</h1>
+            <h1 id="page-title">Ibrahim builds futuristic web experiences.</h1>
             <p className="hero-copy">
               A clean personal profile designed for recruiters, internships,
               and creative web opportunities — now shaped as a cinematic scroll
@@ -188,8 +200,12 @@ function App() {
                 <p>{project.description}</p>
                 <p className="project-signal">{project.signal}</p>
                 <div className="project-actions">
-                  <a href="https://github.com/ibrahim0795">GitHub</a>
-                  <a href="#contact">Details</a>
+                  <a href={project.github}>GitHub</a>
+                  {project.demo ? (
+                    <a href={project.demo}>Live Demo</a>
+                  ) : (
+                    <a href={project.github}>Details</a>
+                  )}
                 </div>
               </article>
             ))}
@@ -210,10 +226,10 @@ function App() {
             <a className="button button-primary" href="https://github.com/ibrahim0795">
               GitHub
             </a>
-            <a className="button" href="https://www.linkedin.com/">
+            <a className="button" href="https://www.linkedin.com/in/ibrahim-anwar-0aa201344/">
               LinkedIn
             </a>
-            <a className="button" href="mailto:hello@example.com">
+            <a className="button" href="mailto:iamibrahimanwar1@gmail.com">
               Email
             </a>
           </div>
