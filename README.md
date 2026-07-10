@@ -37,3 +37,5 @@ npm run build
 ```
 
 The Three.js vendor bundle is intentionally separated from the main app bundle so the normal page shell can load before the immersive 3D layer.
+
+The build also creates the small server entry required by the Sites production host.
