@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unknown-property, react/prop-types */
-import { Float, Stars, Text3D, Center } from '@react-three/drei';
+import { Center, Float, Stars, Text, Text3D } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Suspense, useEffect, useRef } from 'react';
 
@@ -82,6 +82,103 @@ function FloatingInitials() {
   );
 }
 
+const techBadges = [
+  { label: 'HTML', angle: 0, color: '#ff7a59' },
+  { label: 'CSS', angle: Math.PI / 4, color: '#68e8ff' },
+  { label: 'JS', angle: Math.PI / 2, color: '#ffe66d' },
+  { label: 'React', angle: (Math.PI * 3) / 4, color: '#7df9ff' },
+  { label: '3D', angle: Math.PI, color: '#b8f6ff' },
+  { label: 'Git', angle: (Math.PI * 5) / 4, color: '#ff8a65' },
+  { label: 'SQL', angle: (Math.PI * 3) / 2, color: '#8dd6ff' },
+  { label: 'Py', angle: (Math.PI * 7) / 4, color: '#8ef6c5' },
+];
+
+function TechBadge({ badge, index }) {
+  const badgeRef = useRef(null);
+  const radius = 3.05;
+
+  useFrame((state) => {
+    if (!badgeRef.current) return;
+    const time = state.clock.elapsedTime * 0.35;
+    const angle = badge.angle + time;
+    badgeRef.current.position.x = Math.cos(angle) * radius;
+    badgeRef.current.position.z = Math.sin(angle) * 0.65;
+    badgeRef.current.position.y = Math.sin(angle * 1.6 + index) * 0.35;
+    badgeRef.current.lookAt(state.camera.position);
+  });
+
+  return (
+    <group ref={badgeRef}>
+      <mesh>
+        <boxGeometry args={[0.82, 0.32, 0.035]} />
+        <meshStandardMaterial
+          color="#07111f"
+          emissive={badge.color}
+          emissiveIntensity={0.25}
+          metalness={0.45}
+          roughness={0.22}
+          transparent
+          opacity={0.82}
+        />
+      </mesh>
+      <Text
+        position={[0, -0.01, 0.04]}
+        fontSize={0.13}
+        color="#eaf8ff"
+        anchorX="center"
+        anchorY="middle"
+      >
+        {badge.label}
+      </Text>
+    </group>
+  );
+}
+
+function TechOrbit() {
+  const orbitRef = useRef(null);
+
+  useFrame((_, delta) => {
+    if (!orbitRef.current) return;
+    orbitRef.current.rotation.y += delta * 0.08;
+  });
+
+  return (
+    <group ref={orbitRef}>
+      {techBadges.map((badge, index) => (
+        <TechBadge badge={badge} index={index} key={badge.label} />
+      ))}
+    </group>
+  );
+}
+
+function ProjectBeacon({ position, color = '#68e8ff', scale = 1 }) {
+  return (
+    <Float speed={1.2} rotationIntensity={0.28} floatIntensity={0.45}>
+      <group position={position} scale={scale}>
+        <mesh rotation={[0.2, 0.4, 0.1]}>
+          <boxGeometry args={[1.35, 0.78, 0.035]} />
+          <meshBasicMaterial color={color} transparent opacity={0.16} />
+        </mesh>
+        <mesh rotation={[0.2, 0.4, 0.1]} position={[0, 0, 0.03]}>
+          <boxGeometry args={[1.05, 0.5, 0.025]} />
+          <meshBasicMaterial color="#eaf8ff" transparent opacity={0.08} />
+        </mesh>
+        <NeonRing radius={0.78} rotation={[Math.PI / 2, 0, 0]} color={color} />
+      </group>
+    </Float>
+  );
+}
+
+function ProjectConstellation() {
+  return (
+    <group position={[-1.2, -0.65, -2.4]}>
+      <ProjectBeacon position={[-1.6, 0.4, 0]} color="#68e8ff" scale={0.8} />
+      <ProjectBeacon position={[0, -0.15, -0.4]} color="#5f7cff" scale={0.95} />
+      <ProjectBeacon position={[1.65, 0.35, 0.2]} color="#b8f6ff" scale={0.75} />
+    </group>
+  );
+}
+
 function SceneContent() {
   const rigRef = useRef(null);
   const scrollRef = useRef(0);
@@ -145,7 +242,9 @@ function SceneContent() {
       <group ref={rigRef} position={[1.7, 0, -1.8]}>
         <CoreIdentity />
         <FloatingInitials />
+        <TechOrbit />
       </group>
+      <ProjectConstellation />
     </>
   );
 }

@@ -193,6 +193,15 @@ h3 {
   line-height: 1.8;
 }
 
+.section-heading {
+  max-width: 760px;
+}
+
+.section-heading p:not(.eyebrow) {
+  color: rgba(234, 248, 255, 0.68);
+  line-height: 1.75;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -319,15 +328,63 @@ h3 {
 }
 
 .skill-card {
+  position: relative;
+  overflow: hidden;
   display: grid;
+  gap: 0.35rem;
   min-height: 120px;
-  place-items: center;
+  align-content: end;
   color: #eaf8ff;
-  font-size: 1.05rem;
-  font-weight: 900;
+  padding: 1.15rem;
   transform:
     translateY(calc((var(--section-progress) - 0.5) * -18px))
     rotateX(calc((var(--section-progress) - 0.5) * 3deg));
+}
+
+.skill-card::before,
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(120deg, transparent 0%, rgba(104, 232, 255, 0.16) 48%, transparent 58%),
+    radial-gradient(circle at 18% 18%, rgba(104, 232, 255, 0.14), transparent 9rem);
+  opacity: 0.7;
+}
+
+.skill-card > *,
+.project-card > * {
+  position: relative;
+}
+
+.skill-orb {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 1.05rem;
+  height: 1.05rem;
+  border-radius: 50%;
+  background: #68e8ff;
+  box-shadow: 0 0 24px rgba(104, 232, 255, 0.82);
+}
+
+.skill-name {
+  font-size: 1.2rem;
+  font-weight: 950;
+}
+
+.skill-meta,
+.skill-level {
+  color: rgba(234, 248, 255, 0.62);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.skill-level {
+  color: #68e8ff;
 }
 
 .project-grid {
@@ -335,10 +392,64 @@ h3 {
 }
 
 .project-card {
+  position: relative;
+  overflow: hidden;
   padding: 1.4rem;
   transform:
     translateY(calc((var(--section-progress) - 0.5) * -16px))
     rotateY(calc((var(--section-progress) - 0.5) * 2deg));
+}
+
+.project-visual {
+  position: relative;
+  display: grid;
+  min-height: 132px;
+  margin-bottom: 1.2rem;
+  place-items: center;
+  border: 1px solid rgba(104, 232, 255, 0.16);
+  border-radius: 1.1rem;
+  background:
+    radial-gradient(circle at center, rgba(104, 232, 255, 0.16), transparent 62%),
+    rgba(255, 255, 255, 0.03);
+}
+
+.project-visual span {
+  position: absolute;
+  border: 1px solid rgba(104, 232, 255, 0.55);
+  border-radius: 1rem;
+  box-shadow: 0 0 26px rgba(104, 232, 255, 0.16);
+}
+
+.project-visual span:nth-child(1) {
+  width: 68%;
+  height: 54%;
+  transform: rotateX(56deg) rotateZ(-10deg);
+}
+
+.project-visual span:nth-child(2) {
+  width: 46%;
+  height: 34%;
+  transform: translateY(-0.25rem) rotateX(56deg) rotateZ(16deg);
+}
+
+.project-visual span:nth-child(3) {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: #68e8ff;
+  box-shadow: 0 0 24px rgba(104, 232, 255, 0.9);
+}
+
+.project-signal {
+  display: inline-flex;
+  margin: 0.4rem 0 0;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid rgba(104, 232, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(104, 232, 255, 0.08);
+  color: #b8f6ff !important;
+  font-size: 0.78rem;
+  font-weight: 850;
 }
 
 .project-actions {
