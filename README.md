@@ -2,6 +2,8 @@
 
 A futuristic immersive 3D personal portfolio website.
 
+Live site: [https://profilo-3d-portfolio.vercel.app/](https://profilo-3d-portfolio.vercel.app/)
+
 This project is being built step by step with GitHub branches so each stage can be reviewed before moving forward.
 
 ## Build plan
@@ -39,3 +41,7 @@ npm run build
 The Three.js vendor bundle is intentionally separated from the main app bundle so the normal page shell can load before the immersive 3D layer.
 
 The build also creates the small server entry required by the Sites production host.
+
+## Vercel deployment
+
+This project includes `vercel.json` so Vercel serves the Vite static output from `dist/client`.
