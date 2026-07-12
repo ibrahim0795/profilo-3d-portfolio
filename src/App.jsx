@@ -53,6 +53,30 @@ const projects = [
     github: 'https://github.com/ibrahim0795/profilo-3d-portfolio',
     demo: 'https://profilo-3d-portfolio.vercel.app/',
   },
+  {
+    name: 'NOVA 3D Showcase',
+    description:
+      'A cinematic 3D product showcase website with scroll-based storytelling, space visuals, and a futuristic wearable concept.',
+    stack: 'React, Vite, Three.js, GSAP',
+    signal: '3D product website',
+    visibility: 'Private case study',
+  },
+  {
+    name: 'Cafe Management System',
+    description:
+      'A management system project focused on organizing cafe operations, records, and practical business workflow logic.',
+    stack: 'Java',
+    signal: 'Management system',
+    visibility: 'Private project',
+  },
+  {
+    name: 'KitaabBot',
+    description:
+      'A Python automation/chatbot project that shows backend logic, scripting, and practical problem-solving outside the browser UI.',
+    stack: 'Python',
+    signal: 'Automation backend',
+    visibility: 'Private project',
+  },
 ];
 
 function SceneLoader() {
@@ -177,7 +201,7 @@ function App() {
             <h2 id="projects-title">Selected web development work.</h2>
             <p>
               Project panels are focused on web development, full-stack systems,
-              and immersive browser-based UI work.
+              and practical backend projects.
             </p>
           </div>
           <div className="project-grid">
@@ -197,11 +221,17 @@ function App() {
                 <p>{project.description}</p>
                 <p className="project-signal">{project.signal}</p>
                 <div className="project-actions">
-                  <a href={project.github}>GitHub</a>
+                  {project.github ? (
+                    <a href={project.github}>GitHub</a>
+                  ) : (
+                    <span>{project.visibility}</span>
+                  )}
                   {project.demo ? (
                     <a href={project.demo}>Live Demo</a>
-                  ) : (
+                  ) : project.github ? (
                     <a href={project.github}>Details</a>
+                  ) : (
+                    <a href="#contact">Ask me</a>
                   )}
                 </div>
               </article>
