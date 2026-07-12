@@ -15,11 +15,11 @@ const techBadges = [
   { label: 'HTML', angle: 0, color: '#ff7a59' },
   { label: 'CSS', angle: Math.PI / 4, color: '#68e8ff' },
   { label: 'JS', angle: Math.PI / 2, color: '#ffe66d' },
-  { label: 'React', angle: (Math.PI * 3) / 4, color: '#7df9ff' },
-  { label: '3D', angle: Math.PI, color: '#b8f6ff' },
-  { label: 'Git', angle: (Math.PI * 5) / 4, color: '#ff8a65' },
-  { label: 'SQL', angle: (Math.PI * 3) / 2, color: '#8dd6ff' },
-  { label: 'Py', angle: (Math.PI * 7) / 4, color: '#8ef6c5' },
+  { label: 'TS', angle: (Math.PI * 3) / 4, color: '#7df9ff' },
+  { label: 'React', angle: Math.PI, color: '#b8f6ff' },
+  { label: 'Next', angle: (Math.PI * 5) / 4, color: '#eaf8ff' },
+  { label: 'Node', angle: (Math.PI * 3) / 2, color: '#8ef6c5' },
+  { label: 'SQL', angle: (Math.PI * 7) / 4, color: '#8dd6ff' },
 ];
 
 function lerp(start, end, amount) {
