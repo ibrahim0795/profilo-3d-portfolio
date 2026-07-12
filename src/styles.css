@@ -555,6 +555,11 @@ h3 {
   text-decoration: none;
 }
 
+.project-actions span {
+  color: rgba(234, 248, 255, 0.58);
+  font-weight: 850;
+}
+
 .final-section {
   display: grid;
   align-items: center;
