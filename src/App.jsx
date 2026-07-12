@@ -13,22 +13,26 @@ const navItems = [
 
 const skills = [
   { name: 'HTML', type: 'Structure', level: 'Core' },
-  { name: 'CSS', type: 'Interface', level: 'Strong' },
-  { name: 'JavaScript', type: 'Logic', level: 'Core' },
-  { name: 'React', type: 'Frontend', level: 'Growing' },
+  { name: 'CSS', type: 'Styling', level: 'Strong' },
+  { name: 'JavaScript', type: 'Language', level: 'Core' },
+  { name: 'TypeScript', type: 'Language', level: 'Practical' },
+  { name: 'React', type: 'Frontend', level: 'Strong' },
+  { name: 'Next.js', type: 'Full Stack', level: 'Practical' },
+  { name: 'Node.js', type: 'Backend', level: 'Practical' },
+  { name: 'Flask', type: 'Backend', level: 'Practical' },
+  { name: 'PostgreSQL', type: 'Database', level: 'Practical' },
+  { name: 'Python', type: 'Backend/AI', level: 'Practical' },
   { name: 'Three.js', type: '3D Web', level: 'Creative' },
   { name: 'GitHub', type: 'Workflow', level: 'Daily' },
-  { name: 'SQL', type: 'Data', level: 'Practical' },
-  { name: 'Python', type: 'Tools', level: 'Practical' },
 ];
 
 const projects = [
   {
     name: 'AI Video Clipper',
     description:
-      'AI-powered video repurposing pipeline that turns uploads and video URLs into captioned 9:16 social clips.',
+      'A web-based AI video repurposing pipeline that turns uploads and video URLs into captioned 9:16 social clips.',
     stack: 'Python, Flask, FFmpeg, Groq',
-    signal: 'AI media pipeline',
+    signal: 'AI web tool',
     github: 'https://github.com/ibrahim0795/AI-video-clipper',
   },
   {
@@ -41,20 +45,13 @@ const projects = [
     demo: 'https://full-stack-internship-application-t.vercel.app',
   },
   {
-    name: 'Gameboy in C++ using SFML',
+    name: '3D Portfolio Website',
     description:
-      'A C++ SFML Gameboy-style package that brings multiple games together into one creative project.',
-    stack: 'C++, SFML',
-    signal: 'Game development',
-    github: 'https://github.com/ibrahim0795/Gameboy-in-Cpp-using-SFML',
-  },
-  {
-    name: 'Candy Crush in OpenGL',
-    description:
-      'A feature-rich match-3 game with cascades, scoring, levels, hints, pause controls and persistent save/load state.',
-    stack: 'C++, OpenGL',
-    signal: 'Graphics programming',
-    github: 'https://github.com/ibrahim0795/Simple-Candy-Crush-game-using-Cpp-in-openGL',
+      'This cinematic 3D personal portfolio, built to present web development skills, projects and contact links.',
+    stack: 'React, Vite, Three.js, GSAP',
+    signal: 'Immersive web UI',
+    github: 'https://github.com/ibrahim0795/profilo-3d-portfolio',
+    demo: 'https://profilo-3d-portfolio.vercel.app/',
   },
 ];
 
@@ -120,10 +117,10 @@ function App() {
           <div className="identity-card reveal" aria-label="Profile summary">
             <span className="status-dot" />
             <p className="card-label">Profile Signal</p>
-            <h2>Frontend Developer</h2>
+            <h2>Web Developer</h2>
             <p>
-              Focused on polished interfaces, practical projects, and immersive
-              web experiences that still stay readable.
+              Focused on modern frontend interfaces, practical backend tools,
+              databases, and immersive web experiences that stay readable.
             </p>
           </div>
         </div>
@@ -150,10 +147,10 @@ function App() {
         <div className="section-content">
           <div className="section-heading reveal">
             <p className="eyebrow">Skills</p>
-            <h2 id="skills-title">Tools I use to build the experience.</h2>
+            <h2 id="skills-title">Web development tools I use.</h2>
             <p>
-              Each skill is presented like a small signal module: readable first,
-              futuristic second.
+              A focused stack from my web projects: frontend, backend, database,
+              deployment, and immersive 3D UI tools.
             </p>
           </div>
           <div className="skill-grid">
@@ -177,10 +174,10 @@ function App() {
         <div className="section-content">
           <div className="section-heading reveal">
             <p className="eyebrow">Projects</p>
-            <h2 id="projects-title">Selected work in hologram mode.</h2>
+            <h2 id="projects-title">Selected web development work.</h2>
             <p>
-              Project panels now feel like floating digital displays, while the
-              real information stays easy to scan.
+              Project panels are focused on web development, full-stack systems,
+              and immersive browser-based UI work.
             </p>
           </div>
           <div className="project-grid">
