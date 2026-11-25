@@ -64,18 +64,18 @@ const projects = [
   {
     name: 'Cafe Management System',
     description:
-      'A management system project focused on organizing cafe operations, records, and practical business workflow logic.',
-    stack: 'Java',
-    signal: 'Management system',
-    visibility: 'Private project',
+      'A desktop point-of-sale app with manager and cashier roles, orders, inventory tracking and sales reports.',
+    stack: 'Java, JavaFX, SQLite',
+    signal: 'Desktop POS app',
+    github: 'https://github.com/ibrahim0795/CafeManagementSystem',
   },
   {
     name: 'KitaabBot',
     description:
-      'A Python automation/chatbot project that shows backend logic, scripting, and practical problem-solving outside the browser UI.',
-    stack: 'Python',
-    signal: 'Automation backend',
-    visibility: 'Private project',
+      'A hackathon tool that turns a PDF textbook chapter into an offline lesson with visual cards, English and Urdu audio, and quizzes.',
+    stack: 'Python, OpenAI API, Gradio',
+    signal: 'AI learning tool',
+    github: 'https://github.com/ibrahim0795/KitaabBot',
   },
 ];
 
@@ -246,8 +246,7 @@ function App() {
           <h2 id="contact-title">Let’s build something meaningful.</h2>
           <p>
             Available for internships, collaborations, and creative web
-            projects. The next steps will turn this page into a true cinematic
-            3D journey.
+            projects.
           </p>
           <div className="hero-actions" aria-label="Contact links">
             <a className="button button-primary" href="https://github.com/ibrahim0795">
